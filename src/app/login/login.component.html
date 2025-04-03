@@ -1,0 +1,27 @@
+<body>
+  <div class="container-login">
+      <div class="login-left">
+          <h1>CarMa</h1>
+          <img src="./assets/images/Logo.png" alt="Logo CarMa"> 
+          <h2>Cars Management</h2>           
+          <h3>La gestion de vos véhicules</h3>
+      </div>
+
+      <div class="login-right">
+          <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+              <label for="email">Utilisateur (E-mail)</label>
+              <input id="email" [(ngModel)]="email" name="email" placeholder="carma@mail.com" required>
+  
+              <label for="password">Mot de passe</label>
+              <input id="password" [(ngModel)]="password" name="password" placeholder="pwd" required>
+
+              <div class="forgot-password">
+                  <a href="/forgot-password">Mot de passe oublié ?</a>
+              </div>
+  
+              <button type="submit">Connexion</button>
+          </form>
+          <p>Vous n'avez pas de compte ? <a href="/register">Enregistrez-vous ici</a></p>
+      </div>
+  </div>
+</body>

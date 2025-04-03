@@ -9,8 +9,7 @@ body {
 }
 
 .container-login {
-    max-width: 700px;
-    min-width: 550px;
+    width: 50%;
     display: flex;
     border-radius: 20px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
@@ -19,13 +18,12 @@ body {
 }
 
 /* Partie du haut avec le logo */
-.login-top {
+.login-left {
     
     background-color: #f8f2f2; /* Bleu ciel */
     color: red;
     display: flex;
     max-width: 40%;
-    width: 50%;
     flex-direction : column;
     justify-content: center;
     align-items: center;
@@ -33,53 +31,51 @@ body {
      
 }
 
-.login-top h3 {
+.login-left h3 {
     color: black;
     font-size: 16px;;
     margin: 0;
     
 }
 
-.login-top h1, h2, h3{
+.login-left h1, h2, h3{
     margin: 0; ;
     padding: 5px 0;
 }
 
-.login-top img {
-    max-width: 50%;
+.login-left img {
+    max-width: 90%;
     height: auto;
-    margin: 5px 0;
 }
 
-.login-top h3 {
+.login-left h3 {
     color: black;
 }
 
 /* Partie du bas avec le formulaire */
-.login-bottom {
+.login-right {
     display: flex;
     background-color: #ececec; /* ✅ Couleur de fond du bas */
-    max-width: 60%;
-    width: 70%;
+    width: 60%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px 0;
 }
 
-.login-bottom form {
+.login-right form {
     width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center; /* ✅ Centre les éléments (dont le bouton) */
 }
 
-.login-bottom label {
+.login-right label {
     margin-top: 20px;
     font-weight: bold;
 }
 
-.login-bottom username, password {
+.login-right username, password {
     width: 100%;
     padding: 10px 5px;
     border: 1px solid #ccc;
@@ -87,14 +83,14 @@ body {
     margin-top: 5px;
 }
 
-.login-bottom input {
+.login-right input {
     width: 100%;
     padding: 10px 5px ;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.login-bottom button {
+.login-right button {
     
     background-color: #5ff0e4;
     width: 100px;
@@ -106,11 +102,11 @@ body {
     padding: 8px 0;
 }
 
-.login-bottom button:hover {
+.login-right button:hover {
     background-color: #42aebf;
 }
 
-.login-bottom p {
+.login-right p {
     margin-top: 20px 90px 0 0;
     font-size: 14px;
 }
@@ -138,28 +134,12 @@ body {
         max-width: 350px;
     }
 
-    .login-top {
+    .login-left {
         padding: 10px;
     }
 
-    .login-bottom {
+    .login-right {
         padding: 10px;
     }
-}
-
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #070707;
-    color: white;
-    text-align: center;
-    padding: 5px 0;
-    font-size: 10px;
-}
-
-.footer-container p {
-    font-size: 10px;
 }
 
