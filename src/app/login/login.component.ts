@@ -19,7 +19,9 @@ export class LoginComponent {
   onLogin() {
     console.log(this.email,this.password)
     this.authService.login(this.email, this.password).subscribe({
-      next: (response: { token: string }) => {
+      next: (response: any) => {
+        console.log(response)
+        localStorage.setItem('user', response.user.prenom); // Stockage du token dans le localStorage
         this.router.navigate(['/accueil']); // Redirection après connexion réussie
       },
       error: (err: any) => {

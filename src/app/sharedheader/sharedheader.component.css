@@ -1,0 +1,8 @@
+.nav-link.active {
+    font-weight: bold;
+    border-bottom: 2px solid #28a745;
+  }
+  .logout-link {
+    color: red; /* Rouge */
+    font-weight: bold; /* Gras */
+}

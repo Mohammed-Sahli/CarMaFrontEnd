@@ -1,152 +1,29 @@
+/* Applique Flexbox à la navbar pour forcer l'alignement à droite */
+.navbar-collapse {
+    display: flex;
+    justify-content: flex-end; /* Force l'alignement à droite */
+}
+
+/* Ajustement pour la navbar */
+.navbar-nav {
+    margin-left: 0; /* Pas de marge à gauche */
+}
+
+/* Pour s'assurer que la navbar ne prenne pas trop d'espace vertical */
+.navbar {
+    width: 100%;
+}
+
+/* Ajustement de la hauteur du body si nécessaire */
 body {
-    height: 100vh; /* ✅ Prend toute la hauteur de l'écran */
-    min-height: 100vh; /* ✅ Empêche les problèmes sur petits écrans */
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #dbdada;
+    height: 100vh; /* Remplir toute la hauteur de l'écran */
+    margin: 0; /* Retirer les marges par défaut */
+    display: flex; /* Activer Flexbox */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
 }
 
-.container-login {
-    max-width: 700px;
-    min-width: 550px;
-    display: flex;
-    border-radius: 20px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
-    overflow: hidden;
-    background-color: white;
-}
-
-/* Partie du haut avec le logo */
-.login-top {
-    
-    background-color: #f8f2f2; /* Bleu ciel */
-    color: red;
-    display: flex;
-    max-width: 40%;
-    width: 50%;
-    flex-direction : column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
-     
-}
-
-.login-top h3 {
-    color: black;
-    font-size: 16px;;
-    margin: 0;
-    
-}
-
-.login-top h1, h2, h3{
-    margin: 0; ;
-    padding: 5px 0;
-}
-
-.login-top img {
-    max-width: 50%;
-    height: auto;
-    margin: 5px 0;
-}
-
-.login-top h3 {
-    color: black;
-}
-
-/* Partie du bas avec le formulaire */
-.login-bottom {
-    display: flex;
-    background-color: #ececec; /* ✅ Couleur de fond du bas */
-    max-width: 60%;
-    width: 70%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
-}
-
-.login-bottom form {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* ✅ Centre les éléments (dont le bouton) */
-}
-
-.login-bottom label {
-    margin-top: 20px;
-    font-weight: bold;
-}
-
-.login-bottom username, password {
-    width: 100%;
-    padding: 10px 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 5px;
-}
-
-.login-bottom input {
-    width: 100%;
-    padding: 10px 5px ;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.login-bottom button {
-    
-    background-color: #5ff0e4;
-    width: 100px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 10px;
-    padding: 8px 0;
-}
-
-.login-bottom button:hover {
-    background-color: #42aebf;
-}
-
-.login-bottom p {
-    margin-top: 20px 90px 0 0;
-    font-size: 14px;
-}
-
-.forgot-password {
-    text-align: right;
-    margin: 5px 0 15px 0;
-}
-
-.forgot-password a {
-    color: #666;
-    font-size: 0.9em;
-    text-decoration: none;
-    margin: 0 60px 0 0;
-}
-
-.forgot-password a:hover {
-    text-decoration: underline;
-}
-
-/* ✅ Responsive : Réduction de la largeur sur petits écrans */
-@media (max-width: 768px) {
-    .container-login {
-        width: 90%;
-        max-width: 350px;
-    }
-
-    .login-top {
-        padding: 10px;
-    }
-
-    .login-bottom {
-        padding: 10px;
-    }
-}
-
+/* Stylisation du footer */
 footer {
     position: fixed;
     bottom: 0;
@@ -155,11 +32,5 @@ footer {
     background-color: #070707;
     color: white;
     text-align: center;
-    padding: 5px 0;
     font-size: 10px;
 }
-
-.footer-container p {
-    font-size: 10px;
-}
-

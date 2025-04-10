@@ -1,0 +1,82 @@
+body, main {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  font-size: 30px;
+ 
+}
+
+.main-content {
+  margin-top: 56px; /* Ajouter un espacement sous la navbar fixe */
+}
+
+/* Suppression des marges et padding pour la navbar */
+.navbar {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+  position: fixed;
+  top: 0;
+  left: 0; /* S'assurer que la navbar commence au bord gauche de l'écran */
+  z-index: 1030; /* Pour être au-dessus des autres éléments */
+}
+
+/* Pour aligner les éléments de la navbar à gauche */
+.navbar-nav {
+  display: flex;
+  justify-content: flex-start; /* Aligner les éléments à gauche */
+  margin-left: 0; /* S'assurer qu'il n'y ait pas de marge à gauche */
+  padding-left: 0;
+}
+
+/* Espacement entre les éléments de la navbar */
+.navbar-nav .nav-item {
+  padding-right: 20px; /* Ajuste ce padding selon tes préférences */
+}
+
+.logout-link {
+  color: red !important;
+  font-weight: bold !important;
+}
+
+/* Autres styles pour le reste de la page */
+.image-smiley {
+  width: 300px;
+  height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  text-align: center  ;
+}
+
+.change-color {
+  animation: changeColor 5s infinite alternate;
+}
+
+@keyframes changeColor {
+  0% {
+    color: green; /* Début de l'animation : couleur verte */
+  }
+  25% {
+    color: red; /* 25% de l'animation : couleur rouge */
+  }
+  50% {
+    color: blue; /* 50% de l'animation : couleur bleue */
+  }
+  75% {
+    color: violet /* 75% de l'animation : couleur vilolette */
+  }
+  100% {
+    color: green; /* Fin de l'animation : retourne à la couleur verte */
+  }
+}

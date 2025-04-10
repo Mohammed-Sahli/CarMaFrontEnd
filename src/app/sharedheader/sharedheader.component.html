@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">
+      <img src="./assets/images/Logo.png" alt="Logo CarMa" height="40">
+      <span class="text-success" style="font-size: 0.7rem;"> {{ user }}</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link" [ngClass]="{ active: active === 'accueil' }" routerLink="/accueil">Accueil</a>
+        <a class="nav-item nav-link" [ngClass]="{ active: active === 'vehicules' }" routerLink="/vehicules">Véhicules</a>
+        <a class="nav-item nav-link" [ngClass]="{ active: active === 'assurances' }" routerLink="/assurances">Assurances</a>
+        <a class="nav-item nav-link" [ngClass]="{ active: active === 'controles' }" routerLink="/controles">Contrôles techniques</a>
+        <a class="nav-item nav-link" [ngClass]="{ active: active === 'consommables' }" routerLink="/consommables">Consommables</a>
+        <a class="nav-item nav-link" [ngClass]="{ active: active === 'entrereps' }" routerLink="/entrereps">Entretiens & réparations</a>
+        <a class="nav-item nav-link" [ngClass]="{ active: active === 'admin' }" routerLink="/admin">Admin</a>
+        <a class="nav-item nav-link logout-link" href="index.html">Logout</a>
+      </div>
+    </div>
+  </nav>
