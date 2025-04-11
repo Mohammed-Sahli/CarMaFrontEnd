@@ -54,6 +54,10 @@ body, main, .container {
     margin: 0 auto; /* Centre .container */
   }
 
+  .text-right {
+    text-align: right;
+  }
+  
   main {
     display: flex;
     justify-content: center;
@@ -188,14 +192,6 @@ body, main, .container {
   .vehicules-table td {
     vertical-align: middle;
   }
-
-  .form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-
   /* Styles pour le formulaire de modification */
   .form-container {
     width: 100%;
@@ -215,17 +211,23 @@ body, main, .container {
   font-size: 1.5em;
 }
 
+.form-container h1 {
+  font-size: 2em;
+  color: red;
+  margin-bottom: 10px;
+}
+
 .form-row {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 15px;
+  margin-bottom: 8px; /* Réduit de 15px → 8px */
 }
 
 .form-group {
   flex: 1;
   min-width: 200px;
-  margin-right: 15px;
-  margin-bottom: 10px;
+  margin-right: 10px; /* Réduit légèrement */
+  margin-bottom: 8px;  /* Réduit de 10px → 8px */
 }
 
 .form-group label {
@@ -234,9 +236,10 @@ body, main, .container {
   font-weight: bold;
 }
 
-.form-group input {
+.form-group input,
+.form-group select {
   width: 100%;
-  padding: 8px;
+  padding: 4px; /* Réduit de 8px → 6px */
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -244,7 +247,7 @@ body, main, .container {
 .form-actions {
   display: flex;
   justify-content: flex-end;
-  margin-top: 20px;
+  margin-top: 10px; /* Réduit de 20px → 15px */
 }
 
 .btn-save, .btn-cancel {

@@ -32,7 +32,7 @@ export class VehiculesService {
     return this.http.get<any[]>(this.apiUrl + "list");
   }
 
-  createVehicule(vehicule: Vehicule): Observable<Vehicule> {
+  createVehicule(vehicule: Vehicule): Observable<any> {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post<Vehicule>('http://localhost:3000/v', vehicule, { headers });
   }
@@ -42,6 +42,6 @@ export class VehiculesService {
   }
 
   deleteVehicule(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}${id}`);
   }
 }

@@ -63,11 +63,13 @@ export class VehiculesComponent implements OnInit {
 
   loadVehicules(): void {
     this.vehiculesService.getVehicules().subscribe({
-      next: (data) => {
-        this.vehicules = data;
-        console.log('Données chargées :', this.vehicules); // 👈 ajoute ça
+      next: (vehicules) => {
+        this.vehicules = vehicules.sort((a, b) => a.id! - b.id!); // Tri local sur le frontend
       },
-      error: (err) => console.error('Erreur lors du chargement des véhicules:', err)
+      error: (err) => {
+        console.error('Erreur lors du chargement des véhicules:', err);
+        alert('Erreur lors du chargement des véhicules');
+      }
     });
   }
 
@@ -106,46 +108,48 @@ export class VehiculesComponent implements OnInit {
 
         console.log('Données envoyées:', JSON.stringify(formData, null, 2));
       
-      if (this.selectedVehicule) {
-        // Demander confirmation avant la mise à jour
-        if (confirm('Confirmez-vous la modification de ce véhicule ?')) {
-          this.vehiculesService.updateVehicule(this.selectedVehicule.id!, formData).subscribe({
-            next: () => {
-              this.loadVehicules();
-              this.resetForm();
-              alert('Véhicule mis à jour avec succès !');
-            },
-            error: (err) => {
-              console.error('Erreur lors de la mise à jour:', err);
-              alert('Erreur lors de la mise à jour du véhicule');
-            }
-          });
-        }
-      } else {
-        this.vehiculesService.createVehicule(formData).subscribe({
-            next: (createdVehicule) => {
-              console.log('Réponse du serveur:', createdVehicule);
-              this.vehicules = [...this.vehicules, createdVehicule]; // Mise à jour immédiate
+        if (this.selectedVehicule) {
+          // Demander confirmation avant la mise à jour
+          if (confirm('Confirmez-vous la modification de ce véhicule ?')) {
+            this.vehiculesService.updateVehicule(this.selectedVehicule.id!, formData).subscribe({
+              next: () => {
+                this.loadVehicules();
+                // Une fois les véhicules récupérés, on les trie par ID croissant
+                this.vehicules = [...this.vehicules].sort((a, b) => a.id! - b.id!);
+                this.resetForm();
+                alert('Véhicule mis à jour avec succès !');
+              },
+              error: (err) => {
+                console.error('Erreur lors de la mise à jour:', err);
+                alert('Erreur lors de la mise à jour du véhicule');
+              }
+            });
+          }
+        } else {
+          this.vehiculesService.createVehicule(formData).subscribe({
+            next: (serverResponse) => {
+              console.log('Réponse du serveur:', serverResponse);
+              this.vehicules = [...this.vehicules, serverResponse.vehiculeResponse].sort((a, b) => a.id! - b.id!); // Tri après ajout
               this.resetForm();
               alert('Véhicule créé avec succès!');
             },
-            error: (err) => {
-              console.group('Erreur détaillée');
-              console.error('Statut:', err.status);
-              console.error('Message:', err.message);
-              console.error('URL:', err.url);
-              console.error('Erreur complète:', err);
-              console.groupEnd();
-              
-              let errorMessage = 'Erreur lors de la création';
-              if (err.error?.message) {
-                errorMessage += `: ${err.error.message}`;
-              } else if (err.message) {
-                errorMessage += `: ${err.message}`;
-              }
-              
-              alert(errorMessage);
+          error: (err) => {
+            console.group('Erreur détaillée');
+            console.error('Statut:', err.status);
+            console.error('Message:', err.message);
+            console.error('URL:', err.url);
+            console.error('Erreur complète:', err);
+            console.groupEnd();
+        
+            let errorMessage = 'Erreur lors de la création';
+            if (err.error?.message) {
+              errorMessage += `: ${err.error.message}`;
+            } else if (err.message) {
+              errorMessage += `: ${err.message}`;
             }
+        
+            alert(errorMessage);
+          }
         });
       }
     }

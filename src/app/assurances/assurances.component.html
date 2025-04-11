@@ -1,10 +1,118 @@
 
 <app-sharedheader [active]="'assurances'"></app-sharedheader>
 
-    <main class="container ms-auto">
-      <h1>Gestion des assurances </h1>
-      <p> </p>
-      <img src="./assets/images/Mecano.png" alt="Smiley mécano" class="image-smiley">
-    </main>
+<!-- Masquer la liste si on est en création ou édition -->
+<div class="table-container" *ngIf="!selectedassurance && !isCreating">
+  <div class="table-header">
+    <h3>Liste des contrats d'assurances</h3>
 
+    <button class="btn-create" (click)="startCreating()">
+      <i class="fas fa-plus"></i>Créer un contrat d'assurance
+    </button>
+  </div>
+  <div class="table-responsive">
+    <table class="assurances-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Police N°</th>
+          <th>Véhicule</th>
+          <th>Propriétaire</th>
+          <th>Assureur</th>
+          <th>Type</th>
+          <th>Date début</th>
+          <th>Date fin</th>
+          <th>Coût annuel</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let assurance of assurances">
+          <td>{{ assurance.id }} </td>
+          <td>{{ assurance.numero_police }}</td>
+<td>
+  {{ assurance.vehicule?.id }} {{assurance.vehicule?.immat}}
+</td>
+<td>
+  {{ assurance.vehicule?.utilisateur_id }} {{assurance.vehicule?.utilisateur?.prenom}} {{assurance.vehicule?.utilisateur?.nom}} 
+</td>
+          <td>{{ assurance.assureur }}</td>
+          <td>{{ assurance.type_assurance }}</td>
+          <td>{{ assurance.date_debut | date:'dd/MM/yyyy'}}</td>
+          <td>{{ assurance.date_fin | date:'dd/MM/yyyy' }}</td>
+          <td class="text-right">{{ assurance.cout_annuel }} €</td>
 
+          <td class="actions-cell">
+            <button class="btn-edit" (click)="editassurance(assurance)">
+              <i class="fas fa-edit"></i> Modifier
+            </button>
+            <button class="btn-delete" (click)="deleteassurance(assurance.id!)">
+              <i class="fas fa-trash-alt"></i> Supprimer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Formulaire d'ajout/modification -->
+<div class="form-container" *ngIf="selectedassurance || isCreating">
+  <h1 *ngIf="selectedassurance">Modification d'un contrat d'assurance</h1>
+  <h1 *ngIf="!selectedassurance">Création d'un contrat d'assurance</h1>
+  <h3>Informations du contrat</h3>
+  <form [formGroup]="assuranceForm" (ngSubmit)="submitForm()">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Police N°</label>
+            <input type="text" formControlName="numero_police" required>
+          </div>
+          <div class="form-group">
+            <label>Véhicule</label>
+            <input type="text" formControlName="vehicule_id" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Propriétaire</label>
+            <!-- <input type="text" formControlName="marque" required> -->
+          </div>
+          <div class="form-group">
+            <label>Assureur</label>
+            <input type="text" formControlName="assureur">
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Type</label>
+            <select formControlName="type_assurance" required>
+              <option value="Au tiers">Essence</option>
+              <option value="Au tiers étendu">Diesel</option>
+              <option value="Tous risques">Hybride</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Date début</label>
+            <input type="date" formControlName="date_début" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date fin</label>
+            <input type="date" formControlName="date_fin" required>
+          </div>
+          <div class="form-group">
+            <label>Coût annuel (€)</label>
+            <input type="number" formControlName="cout_annuel" required>
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="btn-save" [disabled]="!assuranceForm.valid">Enregistrer</button>
+          <button type="button" class="btn-cancel" (click)="resetForm()">Annuler</button>
+        </div>
+      </form>
+    </div>    
